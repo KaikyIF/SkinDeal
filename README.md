@@ -11,8 +11,6 @@ O mercado de skins de jogos digitais movimenta milhões de usuários e transaç�
 
 Home (apresentação do site, destaque para jogos mais populares e últimas ofertas).
 
-Sobre (explicação sobre o funcionamento do site, benefícios e segurança).
-
 Listagem de Jogos (visualização geral dos jogos com mercados de skins).
 
 Cadastro/Login (para acesso de usuários registrados).
@@ -22,8 +20,6 @@ Cadastro/Login (para acesso de usuários registrados).
 Dashboard do Usuário (resumo das skins, saldo e histórico de vendas/compras).
 
 Marketplace (listagem de skins disponíveis para compra e venda, com filtros).
-
-Carteira (gerenciamento de saldo, opções de saque ou depósito).
 
 Perfil (dados do usuário, configurações de segurança e preferências).
 
