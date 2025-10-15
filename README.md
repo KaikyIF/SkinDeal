@@ -23,8 +23,4 @@ Marketplace (listagem de skins disponíveis para compra e venda, com filtros).
 
 Perfil (dados do usuário, configurações de segurança e preferências).
 
-### Páginas restritas (administrador):
-
-Painel Administrativo (gerenciamento de usuários, anúncios e transações).
-
 Relatórios (estatísticas de uso, vendas e movimentações financeiras).
