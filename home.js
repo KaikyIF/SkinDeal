@@ -1,0 +1,307 @@
+// SVG Paths
+const svgPaths = {
+    p22b32180: "M5.33333 14.6667C5.70152 14.6667 6 14.3682 6 14C6 13.6318 5.70152 13.3333 5.33333 13.3333C4.96514 13.3333 4.66667 13.6318 4.66667 14C4.66667 14.3682 4.96514 14.6667 5.33333 14.6667Z",
+    pceec000: "M12.6667 14.6667C13.0349 14.6667 13.3333 14.3682 13.3333 14C13.3333 13.6318 13.0349 13.3333 12.6667 13.3333C12.2985 13.3333 12 13.6318 12 14C12 14.3682 12.2985 14.6667 12.6667 14.6667Z",
+    p35e3f800: "M1.36666 1.36666H2.69999L4.47333 9.64666C4.53838 9.9499 4.70711 10.221 4.95047 10.4132C5.19383 10.6055 5.4966 10.7069 5.80666 10.7H12.3267C12.6301 10.6995 12.9243 10.5955 13.1607 10.4052C13.397 10.2149 13.5614 9.94968 13.6267 9.65332L14.7267 4.69999H3.41333"
+};
+
+// Products Data
+const products = [
+    { id: 1, name: "Pistola Dourada", price: 400.00, image: "figma:asset/1cc1f6aefd28f6c5263566f0a0202a4c2f0f9024.png", gameIcon: "figma:asset/c51cb0bdd2ada2c89713d2c77c2747ef9e0f2b07.png" },
+    { id: 2, name: "Luvas Vermelhas", price: 1250.00, image: "figma:asset/9ef1eb735a7139d2d50ab9cf87241dad1606dc26.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 3, name: "Faca Rosa", price: 2375.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 4, name: "AK-47 Colorida", price: 285.00, image: "figma:asset/b3e09b04e71d21c8ff68776347961be848a99afd.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 5, name: "M4A4 Roxa", price: 2185.00, image: "figma:asset/a0970b9aced5b21f9cb4e0ccfa415e4b3a1160d9.png", gameIcon: "figma:asset/0fd8409ccba800bb746a82a9acd6bf228db21000.png" },
+    { id: 6, name: "Karambit", price: 756.00, image: "figma:asset/c5d81a41f24dffa460eb56f56fb374c2724be1c5.png", gameIcon: "figma:asset/d6bbd3d77534f2b02ec27a444ca844b09abfd570.png" },
+    { id: 7, name: "Pistola Bronze", price: 400.00, image: "figma:asset/1cc1f6aefd28f6c5263566f0a0202a4c2f0f9024.png", gameIcon: "figma:asset/c51cb0bdd2ada2c89713d2c77c2747ef9e0f2b07.png" },
+    { id: 8, name: "Luvas Rosas", price: 1249.00, image: "figma:asset/9ef1eb735a7139d2d50ab9cf87241dad1606dc26.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 9, name: "Faca Vermelha", price: 2374.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 10, name: "AK-47 Roxa", price: 285.00, image: "figma:asset/b3e09b04e71d21c8ff68776347961be848a99afd.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 11, name: "Karambit Fade", price: 400.00, image: "figma:asset/1cc1f6aefd28f6c5263566f0a0202a4c2f0f9024.png", gameIcon: "figma:asset/c51cb0bdd2ada2c89713d2c77c2747ef9e0f2b07.png" },
+    { id: 12, name: "Luvas Sport", price: 1265.00, image: "figma:asset/9ef1eb735a7139d2d50ab9cf87241dad1606dc26.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 13, name: "Adaga Stiletto", price: 2378.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" }
+];
+
+// State
+let cart = [];
+let favorites = [];
+let searchTerm = '';
+
+// DOM Elements
+const productsGrid = document.getElementById('products-grid');
+const searchInput = document.getElementById('search-input');
+const cartCount = document.getElementById('cart-count');
+const profileBtn = document.querySelector('.nav-btn:last-of-type');
+
+// Profile button navigation
+if (profileBtn) {
+    profileBtn.addEventListener('click', () => {
+        window.location.href = 'perfil.html';
+    });
+}
+
+// Create Cart Icon SVG
+function createCartIconSVG() {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "cart-icon");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("viewBox", "0 0 16 16");
+    svg.setAttribute("preserveAspectRatio", "none");
+    
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("clip-path", "url(#clip0_1_423)");
+    
+    const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path1.setAttribute("d", svgPaths.p22b32180);
+    path1.setAttribute("stroke", "white");
+    path1.setAttribute("stroke-linecap", "round");
+    path1.setAttribute("stroke-linejoin", "round");
+    path1.setAttribute("stroke-width", "1.33333");
+    
+    const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path2.setAttribute("d", svgPaths.pceec000);
+    path2.setAttribute("stroke", "white");
+    path2.setAttribute("stroke-linecap", "round");
+    path2.setAttribute("stroke-linejoin", "round");
+    path2.setAttribute("stroke-width", "1.33333");
+    
+    const path3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path3.setAttribute("d", svgPaths.p35e3f800);
+    path3.setAttribute("stroke", "white");
+    path3.setAttribute("stroke-linecap", "round");
+    path3.setAttribute("stroke-linejoin", "round");
+    path3.setAttribute("stroke-width", "1.33333");
+    
+    g.appendChild(path1);
+    g.appendChild(path2);
+    g.appendChild(path3);
+    
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    const clipPath = document.createElementNS("http://www.w3.org/2000/svg", "clipPath");
+    clipPath.setAttribute("id", "clip0_1_423");
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("fill", "white");
+    rect.setAttribute("width", "16");
+    rect.setAttribute("height", "16");
+    clipPath.appendChild(rect);
+    defs.appendChild(clipPath);
+    
+    svg.appendChild(g);
+    svg.appendChild(defs);
+    
+    return svg;
+}
+
+// Create Favorite Icon SVG (filled heart)
+function createFavoriteIconSVG() {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "20");
+    svg.setAttribute("height", "20");
+    svg.setAttribute("viewBox", "0 0 20 20");
+    svg.setAttribute("fill", "#f8c808");
+    
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z");
+    
+    svg.appendChild(path);
+    return svg;
+}
+
+// Create Product Card
+function createProductCard(product) {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.dataset.productId = product.id;
+    
+    const isFavorite = favorites.includes(product.id);
+    
+    card.innerHTML = `
+        <img 
+            src="figma:asset/4d899c48bec34ecd13971a5609955e576f45fda2.png" 
+            alt="Info" 
+            class="product-info-icon"
+        >
+        
+        <img 
+            src="${product.gameIcon}" 
+            alt="Game" 
+            class="product-game-icon"
+        >
+        
+        <div class="product-image-container">
+            <img 
+                src="${product.image}" 
+                alt="${product.name}" 
+                class="product-image"
+            >
+        </div>
+        
+        <div class="product-price">
+            R$ ${product.price.toFixed(2).replace('.', ',')}
+        </div>
+        
+        <div class="product-buttons">
+            <button class="buy-btn" data-product-id="${product.id}">
+                <span>Comprar</span>
+            </button>
+            
+            <button class="favorite-btn" data-product-id="${product.id}">
+            </button>
+        </div>
+    `;
+    
+    // Add cart icon to buy button
+    const buyBtn = card.querySelector('.buy-btn');
+    buyBtn.insertBefore(createCartIconSVG(), buyBtn.firstChild);
+    
+    // Add favorite icon
+    const favoriteBtn = card.querySelector('.favorite-btn');
+    if (isFavorite) {
+        favoriteBtn.appendChild(createFavoriteIconSVG());
+    } else {
+        const img = document.createElement('img');
+        img.src = 'figma:asset/f54f8eea201e5b9154ecb0fc71b017cec23ea736.png';
+        img.alt = 'Favorite';
+        favoriteBtn.appendChild(img);
+    }
+    
+    return card;
+}
+
+// Render Products
+function renderProducts() {
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    productsGrid.innerHTML = '';
+    
+    filteredProducts.forEach(product => {
+        const card = createProductCard(product);
+        productsGrid.appendChild(card);
+    });
+    
+    // Add event listeners
+    addEventListeners();
+}
+
+// Add Event Listeners
+function addEventListeners() {
+    // Buy buttons
+    document.querySelectorAll('.buy-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const productId = parseInt(e.currentTarget.dataset.productId);
+            addToCart(productId);
+        });
+    });
+    
+    // Favorite buttons
+    document.querySelectorAll('.favorite-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const productId = parseInt(e.currentTarget.dataset.productId);
+            toggleFavorite(productId);
+        });
+    });
+}
+
+// Add to Cart
+function addToCart(productId) {
+    cart.push(productId);
+    updateCartCount();
+    
+    // Visual feedback
+    const product = products.find(p => p.id === productId);
+    showNotification(`${product.name} adicionado ao carrinho!`);
+}
+
+// Toggle Favorite
+function toggleFavorite(productId) {
+    if (favorites.includes(productId)) {
+        favorites = favorites.filter(id => id !== productId);
+    } else {
+        favorites.push(productId);
+    }
+    
+    // Re-render to update favorite icon
+    renderProducts();
+}
+
+// Update Cart Count
+function updateCartCount() {
+    const count = cart.length;
+    cartCount.textContent = count;
+    
+    if (count > 0) {
+        cartCount.classList.add('active');
+    } else {
+        cartCount.classList.remove('active');
+    }
+}
+
+// Show Notification
+function showNotification(message) {
+    // Simple console notification (you can enhance this with a toast notification)
+    console.log(message);
+    
+    // Optional: Create a simple toast
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background-color: #10355b;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 300);
+    }, 2000);
+}
+
+// Add CSS animations for toast
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Search Input Event Listener
+searchInput.addEventListener('input', (e) => {
+    searchTerm = e.target.value;
+    renderProducts();
+});
+
+// Initialize
+renderProducts();
+updateCartCount();
