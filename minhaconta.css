@@ -29,7 +29,7 @@ body {
 .header {
     background-color: rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    height: 85px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -330,5 +330,179 @@ body {
 
     .header {
         height: 70px;
+    }
+}
+
+/* Modal Trocar Conta */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-trocar-content {
+    background-color: #525252;
+    border-radius: 40px;
+    width: 90%;
+    max-width: 393px;
+    padding: 63px 32px 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    animation: scaleIn 0.3s ease;
+}
+
+/* Account Item */
+.modal-account-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    padding: 8px 0;
+}
+
+.modal-account-item:hover {
+    opacity: 0.8;
+}
+
+.modal-account-item.current-account {
+    cursor: default;
+}
+
+.modal-account-item.current-account:hover {
+    opacity: 1;
+}
+
+.modal-account-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.modal-account-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.modal-account-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: white;
+    margin: 0;
+}
+
+.modal-logado-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #498ff9;
+    line-height: 1.5;
+}
+
+/* Modal Dividers */
+.modal-divider {
+    height: 2px;
+    background-color: #e6e6e6;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.modal-divider-vertical {
+    width: 0.5px;
+    height: 330px;
+    background-color: #b5b5b5;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    bottom: -135px;
+}
+
+/* Add New Session */
+.modal-add-session {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.modal-add-session:hover {
+    opacity: 0.8;
+}
+
+.modal-add-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding-left: 16px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Modal Responsive */
+@media (max-width: 640px) {
+    .modal-trocar-content {
+        padding: 55px 24px 250px;
+    }
+
+    .modal-account-name {
+        font-size: 14px;
+    }
+
+    .modal-logado-badge {
+        font-size: 12px;
+    }
+
+    .modal-add-text {
+        font-size: 17px;
+    }
+
+    .modal-divider-vertical {
+        height: 280px;
+        bottom: -115px;
     }
 }
