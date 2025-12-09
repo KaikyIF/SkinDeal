@@ -1,58 +1,54 @@
 // DOM Elements
 const backBtn = document.getElementById('back-btn');
-const optionCards = document.querySelectorAll('.option-card');
+const settingItems = document.querySelectorAll('.setting-item');
 
 // Back button navigation
 if (backBtn) {
     backBtn.addEventListener('click', () => {
-        window.location.href = 'home.html';
+        window.location.href = 'perfil.html';
     });
 }
 
-// Option cards click handlers
-optionCards.forEach((card, index) => {
-    card.addEventListener('click', () => {
-        const optionNames = [
-            'Minha conta',
-            'Notificação',
-            'Inventário',
-            'Favoritos',
-            'Transações',
-            'Configurações'
-        ];
+// Settings data
+const settingsInfo = {
+    notificacoes: 'Notificações',
+    sons: 'Sons e vibrações',
+    jogos: 'Preferência de Jogos',
+    privacidade: 'Privacidade',
+    ajuda: 'Central de ajuda',
+    termos: 'Termos e políticas',
+    feedbacks: 'Feedbacks',
+    email: 'Alterar e-mail',
+    senha: 'Alterar senha',
+    tradelink: 'Trade Link'
+};
+
+// Setting items click handlers
+settingItems.forEach((item) => {
+    item.addEventListener('click', () => {
+        const settingKey = item.dataset.setting;
+        const settingName = settingsInfo[settingKey];
         
-        const optionActions = [
-            'minhaconta.html',
-            'notificacao.html',
-            'inventario.html',
-            'favoritos.html',
-            'transacoes.html',
-            'configuracoes.html'
-        ];
+        console.log(`Configuração selecionada: ${settingName}`);
         
-        console.log(`Clicou em: ${optionNames[index]}`);
+        // Show notification
+        showNotification(`${settingName} - Em desenvolvimento`);
         
-        // Navigate to specific page if available
-        if (optionActions[index]) {
-            window.location.href = optionActions[index];
-            return;
-        }
-        
-        // Show notification for options under development
-        showNotification(`${optionNames[index]} - Em desenvolvimento`);
+        // Future: Navigate to specific setting page
+        // window.location.href = `configuracao-${settingKey}.html`;
+    });
+
+    // Add hover effect sound (optional)
+    item.addEventListener('mouseenter', () => {
+        item.style.transform = 'translateX(4px)';
+    });
+
+    item.addEventListener('mouseleave', () => {
+        item.style.transform = 'translateX(0)';
     });
 });
 
-// Pix item click handler
-const pixItem = document.querySelector('.pix-item');
-if (pixItem) {
-    pixItem.addEventListener('click', () => {
-        console.log('Clicou em Chave Pix');
-        showNotification('Chave Pix - Em desenvolvimento');
-    });
-}
-
-// Show Notification
+// Show Notification Toast
 function showNotification(message) {
     console.log(message);
     
@@ -70,7 +66,8 @@ function showNotification(message) {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         animation: slideIn 0.3s ease;
-        font-family: 'Arimo', 'Arial', sans-serif;
+        font-family: 'Poppins', 'Arial', sans-serif;
+        max-width: 90%;
     `;
     
     document.body.appendChild(toast);
@@ -85,7 +82,7 @@ function showNotification(message) {
     }, 2000);
 }
 
-// Add CSS animations for toast
+// Add CSS animations for toast and hover effects
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -108,6 +105,10 @@ style.textContent = `
             transform: translateX(400px);
             opacity: 0;
         }
+    }
+
+    .setting-item {
+        transition: transform 0.2s ease, background-color 0.2s ease;
     }
 `;
 document.head.appendChild(style);

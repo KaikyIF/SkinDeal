@@ -1,58 +1,55 @@
 // DOM Elements
 const backBtn = document.getElementById('back-btn');
-const optionCards = document.querySelectorAll('.option-card');
+const sortDropdown = document.getElementById('sort-dropdown');
+const inventoryCards = document.querySelectorAll('.inventory-card');
+const priceBtns = document.querySelectorAll('.card-price-btn');
 
 // Back button navigation
 if (backBtn) {
     backBtn.addEventListener('click', () => {
-        window.location.href = 'home.html';
+        window.location.href = 'perfil.html';
     });
 }
 
-// Option cards click handlers
-optionCards.forEach((card, index) => {
-    card.addEventListener('click', () => {
-        const optionNames = [
-            'Minha conta',
-            'Notificação',
-            'Inventário',
-            'Favoritos',
-            'Transações',
-            'Configurações'
-        ];
-        
-        const optionActions = [
-            'minhaconta.html',
-            'notificacao.html',
-            'inventario.html',
-            'favoritos.html',
-            'transacoes.html',
-            'configuracoes.html'
-        ];
-        
-        console.log(`Clicou em: ${optionNames[index]}`);
-        
-        // Navigate to specific page if available
-        if (optionActions[index]) {
-            window.location.href = optionActions[index];
+// Sort dropdown click handler
+if (sortDropdown) {
+    sortDropdown.addEventListener('click', () => {
+        showNotification('Opções de ordenação - Em desenvolvimento');
+    });
+}
+
+// Inventory card click handlers
+inventoryCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+        // Don't trigger if clicking the price button
+        if (e.target.classList.contains('card-price-btn')) {
             return;
         }
         
-        // Show notification for options under development
-        showNotification(`${optionNames[index]} - Em desenvolvimento`);
+        const itemName = card.querySelector('.card-name').textContent;
+        console.log(`Visualizando item: ${itemName}`);
+        showNotification(`Visualizando: ${itemName}`);
     });
 });
 
-// Pix item click handler
-const pixItem = document.querySelector('.pix-item');
-if (pixItem) {
-    pixItem.addEventListener('click', () => {
-        console.log('Clicou em Chave Pix');
-        showNotification('Chave Pix - Em desenvolvimento');
+// Price button click handlers
+priceBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.inventory-card');
+        const itemName = card.querySelector('.card-name').textContent;
+        const price = btn.textContent;
+        
+        console.log(`Vender item: ${itemName} por ${price}`);
+        
+        // Confirm sale
+        if (confirm(`Deseja vender ${itemName} por ${price}?`)) {
+            showNotification(`${itemName} colocado à venda!`);
+        }
     });
-}
+});
 
-// Show Notification
+// Show Notification Toast
 function showNotification(message) {
     console.log(message);
     
@@ -70,7 +67,8 @@ function showNotification(message) {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         animation: slideIn 0.3s ease;
-        font-family: 'Arimo', 'Arial', sans-serif;
+        font-family: 'Poppins', 'Arial', sans-serif;
+        max-width: 90%;
     `;
     
     document.body.appendChild(toast);

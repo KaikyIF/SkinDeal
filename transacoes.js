@@ -1,58 +1,30 @@
 // DOM Elements
 const backBtn = document.getElementById('back-btn');
-const optionCards = document.querySelectorAll('.option-card');
+const transactionCards = document.querySelectorAll('.transaction-card');
 
 // Back button navigation
 if (backBtn) {
     backBtn.addEventListener('click', () => {
-        window.location.href = 'home.html';
+        window.location.href = 'perfil.html';
     });
 }
 
-// Option cards click handlers
-optionCards.forEach((card, index) => {
+// Transaction card click handlers
+transactionCards.forEach((card) => {
     card.addEventListener('click', () => {
-        const optionNames = [
-            'Minha conta',
-            'Notificação',
-            'Inventário',
-            'Favoritos',
-            'Transações',
-            'Configurações'
-        ];
+        const transactionId = card.dataset.transactionId;
+        const typeLabel = card.querySelector('.type-label').textContent;
+        const amount = card.querySelector('.amount').textContent;
+        const statusBadge = card.querySelector('.status-badge');
+        const status = statusBadge.classList.contains('success') ? 'Sucesso' : 'Negado';
         
-        const optionActions = [
-            'minhaconta.html',
-            'notificacao.html',
-            'inventario.html',
-            'favoritos.html',
-            'transacoes.html',
-            'configuracoes.html'
-        ];
+        console.log(`Transação #${transactionId} - ${typeLabel} ${amount} - Status: ${status}`);
         
-        console.log(`Clicou em: ${optionNames[index]}`);
-        
-        // Navigate to specific page if available
-        if (optionActions[index]) {
-            window.location.href = optionActions[index];
-            return;
-        }
-        
-        // Show notification for options under development
-        showNotification(`${optionNames[index]} - Em desenvolvimento`);
+        showNotification(`Detalhes: ${typeLabel} ${amount}`);
     });
 });
 
-// Pix item click handler
-const pixItem = document.querySelector('.pix-item');
-if (pixItem) {
-    pixItem.addEventListener('click', () => {
-        console.log('Clicou em Chave Pix');
-        showNotification('Chave Pix - Em desenvolvimento');
-    });
-}
-
-// Show Notification
+// Show Notification Toast
 function showNotification(message) {
     console.log(message);
     
@@ -70,7 +42,8 @@ function showNotification(message) {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         animation: slideIn 0.3s ease;
-        font-family: 'Arimo', 'Arial', sans-serif;
+        font-family: 'Poppins', 'Arial', sans-serif;
+        max-width: 90%;
     `;
     
     document.body.appendChild(toast);
