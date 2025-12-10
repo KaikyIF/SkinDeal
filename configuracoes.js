@@ -12,7 +12,6 @@ if (backBtn) {
 // Settings data
 const settingsInfo = {
     notificacoes: 'Notificações',
-    sons: 'Sons e vibrações',
     jogos: 'Preferência de Jogos',
     privacidade: 'Privacidade',
     ajuda: 'Central de ajuda',
@@ -31,7 +30,55 @@ settingItems.forEach((item) => {
         
         console.log(`Configuração selecionada: ${settingName}`);
         
-        // Show notification
+        // Navigate to notificacoes page
+        if (settingKey === 'notificacoes') {
+            window.location.href = 'notificacoes.html';
+            return;
+        }
+        
+        // Navigate to alterar email page
+        if (settingKey === 'email') {
+            window.location.href = 'alteraremail.html';
+            return;
+        }
+        
+        // Navigate to alterar senha page
+        if (settingKey === 'senha') {
+            window.location.href = 'alterarsenha.html';
+            return;
+        }
+        
+        // Navigate to trade link page
+        if (settingKey === 'tradelink') {
+            window.location.href = 'tradelink.html';
+            return;
+        }
+        
+        // Navigate to preferencia de jogos page
+        if (settingKey === 'jogos') {
+            window.location.href = 'preferenciajogos.html';
+            return;
+        }
+        
+        // Navigate to privacidade page
+        if (settingKey === 'privacidade') {
+            window.location.href = 'privacidade.html';
+            return;
+        }
+        
+        // Navigate to termos e políticas page
+        if (settingKey === 'termos') {
+            window.location.href = 'termos.html';
+            return;
+        }
+        
+        // Navigate to feedbacks page
+        if (settingKey === 'feedbacks') {
+            window.location.href = 'feedbacks.html';
+            return;
+        }
+        
+        // Show notification for other settings
         showNotification(`${settingName} - Em desenvolvimento`);
         
         // Future: Navigate to specific setting page
