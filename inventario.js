@@ -36,16 +36,7 @@ inventoryCards.forEach((card) => {
 priceBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const card = btn.closest('.inventory-card');
-        const itemName = card.querySelector('.card-name').textContent;
-        const price = btn.textContent;
-        
-        console.log(`Vender item: ${itemName} por ${price}`);
-        
-        // Confirm sale
-        if (confirm(`Deseja vender ${itemName} por ${price}?`)) {
-            showNotification(`${itemName} colocado à venda!`);
-        }
+        window.location.href = 'vender-skin.html';
     });
 });
 

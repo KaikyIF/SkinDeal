@@ -9,7 +9,7 @@ const svgPaths = {
 const products = [
     { id: 1, name: "Pistola Dourada", price: 400.00, image: "figma:asset/1cc1f6aefd28f6c5263566f0a0202a4c2f0f9024.png", gameIcon: "figma:asset/c51cb0bdd2ada2c89713d2c77c2747ef9e0f2b07.png" },
     { id: 2, name: "Luvas Vermelhas", price: 1250.00, image: "figma:asset/9ef1eb735a7139d2d50ab9cf87241dad1606dc26.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
-    { id: 3, name: "Faca Rosa", price: 2375.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
+    { id: 3, name: "Bayonet - Crimson Web", price: 2375.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png", featured: true },
     { id: 4, name: "AK-47 Colorida", price: 285.00, image: "figma:asset/b3e09b04e71d21c8ff68776347961be848a99afd.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
     { id: 5, name: "M4A4 Roxa", price: 2185.00, image: "figma:asset/a0970b9aced5b21f9cb4e0ccfa415e4b3a1160d9.png", gameIcon: "figma:asset/0fd8409ccba800bb746a82a9acd6bf228db21000.png" },
     { id: 6, name: "Karambit", price: 756.00, image: "figma:asset/c5d81a41f24dffa460eb56f56fb374c2724be1c5.png", gameIcon: "figma:asset/d6bbd3d77534f2b02ec27a444ca844b09abfd570.png" },
@@ -191,7 +191,7 @@ function addEventListeners() {
     document.querySelectorAll('.buy-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const productId = parseInt(e.currentTarget.dataset.productId);
-            addToCart(productId);
+            handleBuyClick(productId);
         });
     });
     
@@ -202,6 +202,26 @@ function addEventListeners() {
             toggleFavorite(productId);
         });
     });
+}
+
+// Handle Buy Click - Navigate to purchase page
+function handleBuyClick(productId) {
+    const product = products.find(p => p.id === productId);
+    
+    if (!product) return;
+    
+    // Save product data to localStorage for the purchase page
+    localStorage.setItem('selectedProduct', JSON.stringify({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        gameIcon: product.gameIcon,
+        game: product.name.includes('CS') || product.name.includes('AK') || product.name.includes('Bayonet') ? 'Counter-Strike 2' : 'Outros Jogos'
+    }));
+    
+    // Navigate to purchase page
+    window.location.href = 'comprar.html';
 }
 
 // Add to Cart

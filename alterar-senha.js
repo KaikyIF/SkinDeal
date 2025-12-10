@@ -22,17 +22,17 @@ function showError(fieldId, message) {
 }
 
 // Submit do formulário
-document.getElementById('alterarSenhaForm').addEventListener('submit', function(e) {
+document.getElementById('alterarSenhaForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     clearErrors();
-    
+
     const email = document.getElementById('email').value.trim();
     const newPassword = document.getElementById('newPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    
+
     let isValid = true;
-    
+
     // Validação do e-mail
     if (!email) {
         showError('email', 'Por favor, insira seu e-mail');
@@ -41,7 +41,7 @@ document.getElementById('alterarSenhaForm').addEventListener('submit', function(
         showError('email', 'Por favor, insira um e-mail válido');
         isValid = false;
     }
-    
+
     // Validação da nova senha
     if (!newPassword) {
         showError('newPassword', 'Por favor, insira sua nova senha');
@@ -50,7 +50,7 @@ document.getElementById('alterarSenhaForm').addEventListener('submit', function(
         showError('newPassword', 'A senha deve ter pelo menos 6 caracteres');
         isValid = false;
     }
-    
+
     // Validação da confirmação de senha
     if (!confirmPassword) {
         showError('confirmPassword', 'Por favor, confirme sua nova senha');
@@ -59,21 +59,19 @@ document.getElementById('alterarSenhaForm').addEventListener('submit', function(
         showError('confirmPassword', 'As senhas não coincidem');
         isValid = false;
     }
+
+    // Se válido, redireciona
+if (isValid) {
+    // Desabilita o formulário
+    document.getElementById('email').disabled = true;
+    document.getElementById('newPassword').disabled = true;
+    document.getElementById('confirmPassword').disabled = true;
+    document.getElementById('submitBtn').disabled = true;
+
     
-    // Se válido, mostra mensagem de sucesso e redireciona
-    if (isValid) {
-        // Desabilita o formulário
-        document.getElementById('email').disabled = true;
-        document.getElementById('newPassword').disabled = true;
-        document.getElementById('confirmPassword').disabled = true;
-        document.getElementById('submitBtn').disabled = true;
-        
-        // Mostra mensagem de sucesso
-        document.getElementById('successMessage').style.display = 'block';
-        
-        // Redireciona após 2 segundos
-        setTimeout(function() {
-            window.location.href = 'login.html';
-        }, 2000);
-    }
+    setTimeout(function() {
+        window.location.href = 'confirmacao-codigo.html';
+    }, 500);
+}
+
 });
