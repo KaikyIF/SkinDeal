@@ -17,56 +17,67 @@ if (backBtn) {
 if (passwordForm) {
     passwordForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const currentEmail = currentEmailInput.value.trim();
         const newPassword = newPasswordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
-        
+
         // Validation
         if (!currentEmail || !newPassword || !confirmPassword) {
             showNotification('Por favor, preencha todos os campos', 'error');
             return;
         }
-        
+
         // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
+
         if (!emailRegex.test(currentEmail)) {
             showNotification('E-mail inválido', 'error');
             return;
         }
-        
+
         // Validate password length
         if (newPassword.length < 6) {
             showNotification('A senha deve ter pelo menos 6 caracteres', 'error');
             return;
         }
-        
+
         // Check if new password matches confirmation
         if (newPassword !== confirmPassword) {
             showNotification('As senhas não correspondem', 'error');
             return;
         }
-        
+
         // Validate password strength (optional)
         if (!isPasswordStrong(newPassword)) {
             showNotification('A senha deve conter letras e números', 'error');
             return;
         }
-        
+
         // Save password change request to localStorage and navigate to confirmation page
         localStorage.setItem('pendingPasswordChange', JSON.stringify({
             email: currentEmail,
             timestamp: Date.now()
         }));
-        
+
         showNotification('Redirecionando para confirmação...', 'success');
-        
+
         setTimeout(() => {
             window.location.href = 'confirmarsenha.html';
         }, 1000);
     });
 }
+// Faz o label subir quando o input está preenchido
+document.querySelectorAll('.password-input').forEach(input => {
+    input.addEventListener('input', () => {
+        if (input.value.trim() !== "") {
+            input.parentElement.classList.add('filled');
+        } else {
+            input.parentElement.classList.remove('filled');
+        }
+    });
+});
+
 
 // Password strength validation
 function isPasswordStrong(password) {
@@ -81,7 +92,7 @@ if (confirmPasswordInput && newPasswordInput) {
     confirmPasswordInput.addEventListener('input', () => {
         const newPassword = newPasswordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
-        
+
         if (confirmPassword && newPassword !== confirmPassword) {
             confirmPasswordInput.parentElement.style.borderColor = '#ff4444';
         } else {
@@ -93,14 +104,14 @@ if (confirmPasswordInput && newPasswordInput) {
 // Show Notification Toast
 function showNotification(message, type = 'info') {
     console.log(message);
-    
+
     // Create toast notification
     const toast = document.createElement('div');
     toast.textContent = message;
-    
-    const backgroundColor = type === 'error' ? '#d32f2f' : 
-                           type === 'success' ? '#10355b' : '#10355b';
-    
+
+    const backgroundColor = type === 'error' ? '#d32f2f' :
+        type === 'success' ? '#10355b' : '#10355b';
+
     toast.style.cssText = `
         position: fixed;
         bottom: 24px;
@@ -115,9 +126,9 @@ function showNotification(message, type = 'info') {
         font-family: 'Poppins', 'Arial', sans-serif;
         max-width: 90%;
     `;
-    
+
     document.body.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => {

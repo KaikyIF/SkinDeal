@@ -92,7 +92,7 @@ body {
 
 /* Transaction Card */
 .transaction-card {
-    background-color: #6b6b6b;
+    background-color: #353535;
     border-radius: 10px;
     padding: 24px;
     display: flex;
@@ -105,7 +105,7 @@ body {
 
 .transaction-card:hover {
     transform: translateY(-2px);
-    background-color: #757575;
+    background-color: #7575756e;
 }
 
 .card-info {

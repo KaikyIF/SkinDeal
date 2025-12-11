@@ -7,17 +7,7 @@
 
 body {
     font-family: 'Poppins', 'Inter', 'Arial', sans-serif;
-    background: linear-gradient(
-        rgba(20, 28, 36, 0.173) 0%, 
-        rgba(30, 41, 51, 0.17) 0%, 
-        rgba(28, 28, 36, 0.11) 0%, 
-        rgba(24, 28, 36, 0.19) 0%, 
-        rgba(56, 103, 123, 0.2) 0%, 
-        rgba(24, 28, 36, 0.16) 70.673%, 
-        rgba(24, 28, 36, 0.19) 93.269%, 
-        rgba(40, 65, 79, 0.2) 100%
-    ), 
-    linear-gradient(90deg, rgb(20, 28, 36) 0%, rgb(20, 28, 36) 100%);
+    background: linear-gradient(rgba(20, 28, 36, 0.173) 0%, rgba(30, 41, 51, 0.17) 0%, rgba(28, 28, 36, 0.11) 0%, rgba(24, 28, 36, 0.19) 0%, rgba(56, 103, 123, 0.2) 0%, rgba(24, 28, 36, 0.16) 70.673%, rgba(24, 28, 36, 0.19) 93.269%, rgba(40, 65, 79, 0.2) 100%), linear-gradient(90deg, rgb(20, 28, 36) 0%, rgb(20, 28, 36) 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -145,8 +135,9 @@ body {
     z-index: 1;
 }
 
-.input-container:focus-within .input-label,
-.email-input:not(:placeholder-shown) + .input-label {
+/* Label sobe quando focado ou preenchido */
+.input-container.filled .input-label,
+.input-container:focus-within .input-label {
     top: -2px;
     font-size: 11px;
 }

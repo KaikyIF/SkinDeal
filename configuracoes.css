@@ -114,7 +114,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    height: 189px;
+    height: 125px;
 }
 
 .right-column .settings-section {

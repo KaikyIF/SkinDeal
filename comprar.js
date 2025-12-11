@@ -253,7 +253,7 @@ if (gameIcon) {
 
 if (steamIcon) {
     steamIcon.addEventListener('error', function() {
-        this.src = 'https://via.placeholder.com/25/10355b/ffffff?text=S';
+        this.src = 'file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Steam).png';
     });
 }
 

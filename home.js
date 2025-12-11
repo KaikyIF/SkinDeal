@@ -7,19 +7,19 @@ const svgPaths = {
 
 // Products Data
 const products = [
-    { id: 1, name: "Pistola Dourada", price: 400.00, image: "figma:asset/1cc1f6aefd28f6c5263566f0a0202a4c2f0f9024.png", gameIcon: "figma:asset/c51cb0bdd2ada2c89713d2c77c2747ef9e0f2b07.png" },
-    { id: 2, name: "Luvas Vermelhas", price: 1250.00, image: "figma:asset/9ef1eb735a7139d2d50ab9cf87241dad1606dc26.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
-    { id: 3, name: "Bayonet - Crimson Web", price: 2375.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png", featured: true },
-    { id: 4, name: "AK-47 Colorida", price: 285.00, image: "figma:asset/b3e09b04e71d21c8ff68776347961be848a99afd.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
-    { id: 5, name: "M4A4 Roxa", price: 2185.00, image: "figma:asset/a0970b9aced5b21f9cb4e0ccfa415e4b3a1160d9.png", gameIcon: "figma:asset/0fd8409ccba800bb746a82a9acd6bf228db21000.png" },
-    { id: 6, name: "Karambit", price: 756.00, image: "figma:asset/c5d81a41f24dffa460eb56f56fb374c2724be1c5.png", gameIcon: "figma:asset/d6bbd3d77534f2b02ec27a444ca844b09abfd570.png" },
-    { id: 7, name: "Pistola Bronze", price: 400.00, image: "figma:asset/1cc1f6aefd28f6c5263566f0a0202a4c2f0f9024.png", gameIcon: "figma:asset/c51cb0bdd2ada2c89713d2c77c2747ef9e0f2b07.png" },
-    { id: 8, name: "Luvas Rosas", price: 1249.00, image: "figma:asset/9ef1eb735a7139d2d50ab9cf87241dad1606dc26.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
-    { id: 9, name: "Faca Vermelha", price: 2374.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
-    { id: 10, name: "AK-47 Roxa", price: 285.00, image: "figma:asset/b3e09b04e71d21c8ff68776347961be848a99afd.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
-    { id: 11, name: "Karambit Fade", price: 400.00, image: "figma:asset/1cc1f6aefd28f6c5263566f0a0202a4c2f0f9024.png", gameIcon: "figma:asset/c51cb0bdd2ada2c89713d2c77c2747ef9e0f2b07.png" },
-    { id: 12, name: "Luvas Sport", price: 1265.00, image: "figma:asset/9ef1eb735a7139d2d50ab9cf87241dad1606dc26.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" },
-    { id: 13, name: "Adaga Stiletto", price: 2378.00, image: "figma:asset/1fda43cd06b1f2f6a1b63345744c9f6d991ed6db.png", gameIcon: "figma:asset/fba496b52c4ec79e9784814e695e60e8205dcdbb.png" }
+    { id: 1, name: "Pistola Dourada", price: 400.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(3).png" },
+    { id: 2, name: "Luvas Vermelhas", price: 1250.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(1).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png" },
+    { id: 3, name: "Bayonet - Crimson Web", price: 2375.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(2).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png", featured: true },
+    { id: 4, name: "AK-47 Colorida", price: 285.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(3).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png" },
+    { id: 5, name: "M4A4 Roxa", price: 2185.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(4).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Rust.png" },
+    { id: 6, name: "Karambit", price: 756.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(5).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/dota.jpg" },
+    { id: 7, name: "Pistola Bronze", price: 400.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(3).png" },
+    { id: 8, name: "Luvas Rosas", price: 1249.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(1).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png" },
+    { id: 9, name: "Faca Vermelha", price: 2374.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(2).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png" },
+    { id: 10, name: "AK-47 Roxa", price: 285.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(3).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png" },
+    { id: 11, name: "Karambit Fade", price: 400.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(3).png" },
+    { id: 12, name: "Luvas Sport", price: 1265.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(1).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png" },
+    { id: 13, name: "Adaga Stiletto", price: 2378.00, image: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Product)%20(2).png", gameIcon: "file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Game)%20(2).png" }
 ];
 
 // State
@@ -92,20 +92,7 @@ function createCartIconSVG() {
     return svg;
 }
 
-// Create Favorite Icon SVG (filled heart)
-function createFavoriteIconSVG() {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("width", "20");
-    svg.setAttribute("height", "20");
-    svg.setAttribute("viewBox", "0 0 20 20");
-    svg.setAttribute("fill", "#f8c808");
-    
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", "M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z");
-    
-    svg.appendChild(path);
-    return svg;
-}
+
 
 // Create Product Card
 function createProductCard(product) {
@@ -117,7 +104,7 @@ function createProductCard(product) {
     
     card.innerHTML = `
         <img 
-            src="figma:asset/4d899c48bec34ecd13971a5609955e576f45fda2.png" 
+            src="file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/Image%20(Info)%20(1).png" 
             alt="Info" 
             class="product-info-icon"
         >
@@ -145,8 +132,7 @@ function createProductCard(product) {
                 <span>Comprar</span>
             </button>
             
-            <button class="favorite-btn" data-product-id="${product.id}">
-            </button>
+            
         </div>
     `;
     
@@ -154,16 +140,7 @@ function createProductCard(product) {
     const buyBtn = card.querySelector('.buy-btn');
     buyBtn.insertBefore(createCartIconSVG(), buyBtn.firstChild);
     
-    // Add favorite icon
-    const favoriteBtn = card.querySelector('.favorite-btn');
-    if (isFavorite) {
-        favoriteBtn.appendChild(createFavoriteIconSVG());
-    } else {
-        const img = document.createElement('img');
-        img.src = 'figma:asset/f54f8eea201e5b9154ecb0fc71b017cec23ea736.png';
-        img.alt = 'Favorite';
-        favoriteBtn.appendChild(img);
-    }
+    
     
     return card;
 }
@@ -195,13 +172,7 @@ function addEventListeners() {
         });
     });
     
-    // Favorite buttons
-    document.querySelectorAll('.favorite-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const productId = parseInt(e.currentTarget.dataset.productId);
-            toggleFavorite(productId);
-        });
-    });
+    
 }
 
 // Handle Buy Click - Navigate to purchase page

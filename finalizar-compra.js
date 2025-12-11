@@ -92,7 +92,7 @@ function renderQRCode() {
     
     // Create image element with real QR Code
     const img = document.createElement('img');
-    img.src = 'https://images.unsplash.com/photo-1571867424488-4565932edb41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxxciUyMGNvZGUlMjBwYXltZW50fGVufDF8fHx8MTc2NTM1MDk4NXww&ixlib=rb-4.1.0&q=80&w=1080';
+    img.src = 'file:///C:/Users/Cliente/Documents/GitHub/SkinDeal/Imagens%20do%20site/qrcode%201.svg';
     img.alt = 'QR Code PIX';
     img.style.cssText = `
         width: 100%;

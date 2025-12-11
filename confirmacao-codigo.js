@@ -66,7 +66,7 @@ btnConfirmar.addEventListener('click', function() {
     
     if (code.length === 5 && /^\d{5}$/.test(code)) {
         // Redireciona para a tela de alterar senha
-        window.location.href = 'alterar-senha.html';
+        window.location.href = 'login.html';
     }
 });
 

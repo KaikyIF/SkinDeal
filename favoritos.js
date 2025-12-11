@@ -24,19 +24,7 @@ if (searchInput) {
     });
 }
 
-// Favorite card click handlers
-favoriteCards.forEach((card) => {
-    card.addEventListener('click', (e) => {
-        // Don't trigger if clicking the favorite button
-        if (e.target.closest('.favorite-btn')) {
-            return;
-        }
-        
-        const itemId = card.dataset.itemId;
-        console.log(`Visualizando item favorito: ${itemId}`);
-        showNotification(`Visualizando item #${itemId}`);
-    });
-});
+
 
 // Favorite button click handlers
 favoriteBtns.forEach((btn) => {

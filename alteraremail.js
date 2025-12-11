@@ -12,61 +12,81 @@ if (backBtn) {
         window.location.href = 'configuracoes.html';
     });
 }
+// Faz o label subir quando o input está preenchido
+document.querySelectorAll('.email-input').forEach(input => {
+    const container = input.closest('.input-container');
+
+    function update() {
+        if (input.value.trim() !== "") {
+            container.classList.add('filled');
+        } else {
+            container.classList.remove('filled');
+        }
+    }
+
+    input.addEventListener('input', update);
+    input.addEventListener('blur', update);
+
+    // Atualizar ao carregar a página (caso tenha valor salvo)
+    update();
+});
+
+
 
 // Form validation and submission
 if (emailForm) {
     emailForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const currentEmail = currentEmailInput.value.trim();
         const newEmail = newEmailInput.value.trim();
         const confirmEmail = confirmEmailInput.value.trim();
-        
+
         // Validation
         if (!currentEmail || !newEmail || !confirmEmail) {
             showNotification('Por favor, preencha todos os campos', 'error');
             return;
         }
-        
+
         // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
+
         if (!emailRegex.test(currentEmail)) {
             showNotification('E-mail atual inválido', 'error');
             return;
         }
-        
+
         if (!emailRegex.test(newEmail)) {
             showNotification('Novo e-mail inválido', 'error');
             return;
         }
-        
+
         if (!emailRegex.test(confirmEmail)) {
             showNotification('Confirmação de e-mail inválida', 'error');
             return;
         }
-        
+
         // Check if new email matches confirmation
         if (newEmail !== confirmEmail) {
             showNotification('Os e-mails não correspondem', 'error');
             return;
         }
-        
+
         // Check if new email is different from current
         if (currentEmail === newEmail) {
             showNotification('O novo e-mail deve ser diferente do atual', 'error');
             return;
         }
-        
+
         // Save email to localStorage and navigate to confirmation page
         localStorage.setItem('pendingEmailChange', JSON.stringify({
             currentEmail,
             newEmail,
             timestamp: Date.now()
         }));
-        
+
         showNotification('Redirecionando para confirmação...', 'success');
-        
+
         setTimeout(() => {
             window.location.href = 'confirmaremail.html';
         }, 1000);
@@ -78,7 +98,7 @@ if (confirmEmailInput && newEmailInput) {
     confirmEmailInput.addEventListener('input', () => {
         const newEmail = newEmailInput.value.trim();
         const confirmEmail = confirmEmailInput.value.trim();
-        
+
         if (confirmEmail && newEmail !== confirmEmail) {
             confirmEmailInput.style.borderColor = '#ff4444';
         } else {
@@ -90,14 +110,14 @@ if (confirmEmailInput && newEmailInput) {
 // Show Notification Toast
 function showNotification(message, type = 'info') {
     console.log(message);
-    
+
     // Create toast notification
     const toast = document.createElement('div');
     toast.textContent = message;
-    
-    const backgroundColor = type === 'error' ? '#d32f2f' : 
-                           type === 'success' ? '#10355b' : '#10355b';
-    
+
+    const backgroundColor = type === 'error' ? '#d32f2f' :
+        type === 'success' ? '#10355b' : '#10355b';
+
     toast.style.cssText = `
         position: fixed;
         bottom: 24px;
@@ -112,9 +132,9 @@ function showNotification(message, type = 'info') {
         font-family: 'Poppins', 'Arial', sans-serif;
         max-width: 90%;
     `;
-    
+
     document.body.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => {

@@ -43,14 +43,7 @@ optionCards.forEach((card, index) => {
     });
 });
 
-// Pix item click handler
-const pixItem = document.querySelector('.pix-item');
-if (pixItem) {
-    pixItem.addEventListener('click', () => {
-        console.log('Clicou em Chave Pix');
-        showNotification('Chave Pix - Em desenvolvimento');
-    });
-}
+
 
 // Show Notification
 function showNotification(message) {
