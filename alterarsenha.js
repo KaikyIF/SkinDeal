@@ -67,16 +67,26 @@ if (passwordForm) {
         }, 1000);
     });
 }
+
 // Faz o label subir quando o input está preenchido
 document.querySelectorAll('.password-input').forEach(input => {
-    input.addEventListener('input', () => {
+    const container = input.closest('.input-container');
+
+    function update() {
         if (input.value.trim() !== "") {
-            input.parentElement.classList.add('filled');
+            container.classList.add('filled');
         } else {
-            input.parentElement.classList.remove('filled');
+            container.classList.remove('filled');
         }
-    });
+    }
+
+    input.addEventListener('input', update);
+    input.addEventListener('blur', update);
+
+    // Atualizar no carregamento caso tenha valor salvo
+    update();
 });
+
 
 
 // Password strength validation
