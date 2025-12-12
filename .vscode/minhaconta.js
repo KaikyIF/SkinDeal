@@ -74,7 +74,7 @@ menuOptions.forEach(option => {
             if (confirm('Deseja realmente sair da sua conta?')) {
                 showNotification('Saindo...');
                 setTimeout(() => {
-                    window.location.href = 'home.html';
+                    window.location.href = 'login.html';
                 }, 1500);
             }
             return;

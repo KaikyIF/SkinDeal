@@ -59,9 +59,8 @@ if (modalDeleteBtn) {
             hideModal();
             showNotification('Conta excluída com sucesso');
             
-            // Redirect to home after 2 seconds
             setTimeout(() => {
-                window.location.href = 'home.html';
+                window.location.href = 'login.html';
             }, 2000);
         } else {
             hideModal();
